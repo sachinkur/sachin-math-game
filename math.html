@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2 id="points1"></h2>
+    <h2 id="points2"></h2>
+    <center>
+        <header style="font-size: 60px;">Math games</header>
+        <hr>
+    <h2 id="message"></h2>
+    <h2 id="ques_turn">question turn: </h2>
+    <h2 id="answer_turn">answer turn: </h2>
+    <h2 id="ques_label"></h2>
+    <br>
+    <input type="text" id="number1" placeholder="enter number 1 here"></input>
+    <input type="text" id="number2" placeholder="enter number 2 here"></input>
+
+    <button onclick="question()">Done</button>
+    <br><br><br>
+    <input type="text" placeholder="enter answer here: " id="answer_input"></input>
+    
+    <button id="finish" onclick="finish()">answer</button><br><br>
+    <button class="btn-danger" onclick="func_clear_bird()" id="clear_button">clear</button>
+
+
+    </center>   
+    <script>
+
+        player2_points = 0
+        player1_points = 0
+        player1_name = localStorage.getItem("Player1")
+        player2_name = localStorage.getItem("Player2")
+
+            document.getElementById("points1").innerHTML = player1_name + " : " + player1_points;
+            document.getElementById("points2").innerHTML = player2_name + " : " + player2_points;
+            document.getElementById("ques_turn").innerHTML = "Question turn : " + player1_name 
+            document.getElementById("answer_turn").innerHTML = "Answer turn : " + player2_name 
+
+        function func_clear_bird() {
+            console.log("ff")
+            document.getElementById("ques_label").innerHTML = ""
+        }
+        function question() {
+
+            num1 = document.getElementById("number1").value
+            num2 = document.getElementById("number2").value
+
+
+            document.getElementById("ques_label").innerHTML = num1 + " x " + num2 + " == ?" ;
+
+            document.getElementById("number1").value = "";
+            document.getElementById("number2").value = "";
+
+        }
+        answer_turn = "Player_2";
+        ques_turn = "Player_1";
+        function finish() {
+            
+
+
+            console.log(num1*num2)
+            answer = document.getElementById("answer_input").value;
+            correct_answer = num1*num2
+            console.log("correct_answer = " + correct_answer)
+            console.log("answer entered = " + answer);
+            document.getElementById("ques_label").innerHTML = num1 + " x " + num2 + " == " + answer; 
+            document.getElementById("answer_input").value = "";
+            if (answer == correct_answer)
+            {
+                if (answer_turn == "Player_2")
+                {
+                document.getElementById("message").innerHTML = "Correct"
+                player2_points=player2_points+1
+                document.getElementById("points2").innerHTML = player2_name + " : " + player2_points;
+                }
+                else if (answer_turn == "Player_1")
+                {
+                document.getElementById("message").innerHTML = "Correct"
+                player1_points=player1_points+1
+                document.getElementById("points1").innerHTML = player1_name + " : " + player1_points;
+                }
+
+            }
+            
+                else if (answer !== correct_answer)
+                {
+                    document.getElementById("message").innerHTML = "WRONG!!"
+                }
+            if (ques_turn == "Player_1")
+            {
+                ques_turn = "Player_2"
+                document.getElementById("ques_turn").innerHTML = "Question turn: " + player2_name
+                
+            }
+            else if (ques_turn == "Player_2")
+            {
+                ques_turn = "Player_1"
+                document.getElementById("ques_turn").innerHTML = "Question turn: " + player1_name
+                
+            }
+
+
+            if (answer_turn == "Player_1")
+            {
+                answer_turn = "Player_2"
+                document.getElementById("answer_turn").innerHTML = "Answer turn: " + player2_name
+                
+            }
+            else if (answer_turn == "Player_2")
+            {
+                answer_turn = "Player_1"
+                document.getElementById("answer_turn").innerHTML = "Answer turn: " + player1_name
+                
+            }
+        }        
+
+    </script>
+    <style>
+        #scroll
+        {
+            visibility: block;
+        }
+        .play
+        {
+
+            width: 700px; height: 700px; background: rgb(76, 95, 138); border: 2px solid black ; padding: 10%;
+
+        }
+        h1
+        {
+            font-family: 'Happy Monkey', cursive;
+        }
+        body
+        {
+            background-color: rgb(156, 170, 214);
+        }
+        .square 
+        {
+            width: 700px; height: 800px; background: rgb(76, 95, 138); border: 2px solid black ; padding: 10%;
+        }
+        h2
+        {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+        input
+        {
+            border-style:ridge;
+            border-color: black;
+            border-width: 5;
+            
+        }
+        header
+        {
+            font-size: 100;
+        }
+        #points1{
+            font-size: 20;
+        }
+        #points2 {
+            font-size: 20;
+        }
+    </style>
+</body>
+</html>

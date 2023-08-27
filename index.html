@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <center>
+            <div class="square">
+                <header>Math games</header>
+                <h2>by sachin</h2>
+                
+                <hr>
+                <h1>Login here to play</h1>
+            
+                <h2>User name:</h2>
+                <input type="text" placeholder="Player 1 username here" class="form-control" id="player1_login"></input>
+                
+                <h2>User name:</h2>
+                <input type="text" placeholder="Player 2 username here" class="form-control" id="player2_login"></input><br><br>
+                <button onclick="adduser()">Login</button>
+                <br>
+                <h2 id="scroll"></h2>
+                <br>
+                <br>
+                <br>
+
+
+ 
+        
+    </div>
+    </center>
+
+
+<!-- create a box to the left then create the rest of the login page positioned to the right -->
+      
+    <script>
+        function adduser() {
+            player1_login = document.getElementById("player1_login").value
+            player2_login = document.getElementById("player2_login").value
+
+            localStorage.setItem("Player1", player1_login)
+            localStorage.setItem("Player2", player2_login)
+            
+            window.location = "math.html"
+   
+        }
+    </script>
+    <style>
+        #scroll
+        {
+            visibility: block;
+        }
+        .play
+        {
+
+            width: 700px; height: 700px; background: rgb(76, 95, 138); border: 2px solid black ; padding: 10%;
+
+        }
+        h1
+        {
+            font-family: 'Happy Monkey', cursive;
+        }
+        body
+        {
+            background-color: rgb(156, 170, 214);
+        }
+        .square 
+        {
+            width: 700px; height: 800px; background: rgb(76, 95, 138); border: 2px solid black ; padding: 10%;
+        }
+        h2
+        {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+        input
+        {
+            border-style:ridge;
+            border-color: black;
+            border-width: 5;
+            
+        }
+        header
+        {
+            font-size: 100;
+        }
+        #points1{
+            font-size: 20;
+        }
+        #points2 {
+            font-size: 20;
+        }
+    </style>
+    </body>
+</html>
